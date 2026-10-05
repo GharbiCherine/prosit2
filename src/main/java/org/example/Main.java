@@ -6,15 +6,14 @@ public class Main {
         Animal lion = new Animal("Felidae", "Simba", 5, true);
         Animal tiger = new Animal("Felidae", "Shere Khan", 7, true);
         Animal eagle = new Animal("Accipitridae", "Sky", 3, false);
+        Animal bear = new Animal("Ursidae", "Baloo", 10, true);
 
-        Zoo myZoo = new Zoo("Belvedere Zoo", "Tunis", 25);
+        Zoo myZoo = new Zoo("Belvedere Zoo", "Tunis", 3);   // only 3 cages
 
-        myZoo.displayZoo();
-        System.out.println(myZoo);
-        System.out.println(myZoo.toString());
-
-        System.out.println(lion);
-        System.out.println(lion.toString());
+        System.out.println("Add lion : " + myZoo.addAnimal(lion));
+        System.out.println("Add tiger: " + myZoo.addAnimal(tiger));
+        System.out.println("Add eagle: " + myZoo.addAnimal(eagle));
+        System.out.println("Add bear : " + myZoo.addAnimal(bear));
     }
 }
         // Instruction 6: after adding the parameterized constructors, new Animal() and
