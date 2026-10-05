@@ -6,6 +6,7 @@ public class Zoo {
     String city;
     int nbrCages;
     int animalCount = 0;
+    static final int MAX_ANIMALS = 25;
 
     public Zoo() {
     }
@@ -26,11 +27,17 @@ public class Zoo {
         return "Zoo{name='" + name + "', city='" + city + "', nbrCages=" + nbrCages + "}";
     }
     public boolean addAnimal(Animal animal) {
-        if (animalCount >= animals.length) {
-            return false;                    // no free cage
+        if (animal == null) {
+            return false;                                  // nothing to add
         }
-        animals[animalCount] = animal;       // put the animal in the next free cell
-        animalCount++;                       // move the counter forward
+        if (animalCount >= MAX_ANIMALS || animalCount >= animals.length) {
+            return false;                                  // zoo is full
+        }
+        if (searchAnimal(animal) != -1) {
+            return false;                                  // animal already in the zoo
+        }
+        animals[animalCount] = animal;
+        animalCount++;
         return true;
     }
     public void displayAnimals() {
