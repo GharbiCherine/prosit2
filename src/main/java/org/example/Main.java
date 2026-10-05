@@ -13,5 +13,8 @@ public class Main {
         myZoo.city = "Tunis";
         myZoo.nbrCages = 25;
         myZoo.animals = new Animal[25];
+        // Instruction 6: after adding the parameterized constructors, new Animal() and
+        // new Zoo() no longer compile, because Java removes the default constructor
+        // once any constructor is defined.
     }
 }
