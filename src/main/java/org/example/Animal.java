@@ -1,5 +1,3 @@
-package org.example;
-
 public class Animal {
     String family;
     String name;
@@ -15,6 +13,7 @@ public class Animal {
         this.age = age;
         this.isMammal = isMammal;
     }
+
     @Override
     public String toString() {
         return "Animal{family='" + family + "', name='" + name + "', age=" + age

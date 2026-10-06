@@ -1,45 +1,47 @@
-package org.example;
-
 public class Zoo {
+    static final int NBR_CAGES = 25;   // constante : ne peut plus changer
+
     Animal[] animals;
     String name;
     String city;
-    int nbrCages;
     int animalCount = 0;
-    static final int MAX_ANIMALS = 25;
 
     public Zoo() {
+        animals = new Animal[NBR_CAGES];
     }
 
-    public Zoo(String name, String city, int nbrCages) {
-        animals = new Animal[nbrCages];
+    public Zoo(String name, String city) {
+        animals = new Animal[NBR_CAGES];
         this.name = name;
         this.city = city;
-        this.nbrCages = nbrCages;
     }
+
     public void displayZoo() {
         System.out.println("Zoo name : " + name);
         System.out.println("City     : " + city);
-        System.out.println("Cages    : " + nbrCages);
+        System.out.println("Cages    : " + NBR_CAGES);
     }
+
     @Override
     public String toString() {
-        return "Zoo{name='" + name + "', city='" + city + "', nbrCages=" + nbrCages + "}";
+        return "Zoo{name='" + name + "', city='" + city + "', nbrCages=" + NBR_CAGES + "}";
     }
+
     public boolean addAnimal(Animal animal) {
         if (animal == null) {
-            return false;                                  // nothing to add
+            return false;
         }
-        if (animalCount >= MAX_ANIMALS || animalCount >= animals.length) {
-            return false;                                  // zoo is full
+        if (animalCount >= NBR_CAGES) {
+            return false;
         }
         if (searchAnimal(animal) != -1) {
-            return false;                                  // animal already in the zoo
+            return false;
         }
         animals[animalCount] = animal;
         animalCount++;
         return true;
     }
+
     public void displayAnimals() {
         System.out.println("Animals in " + name + ":");
         for (int i = 0; i < animalCount; i++) {
@@ -49,23 +51,23 @@ public class Zoo {
 
     public int searchAnimal(Animal animal) {
         for (int i = 0; i < animalCount; i++) {
-            if (animals[i].name.equals(animal.name)) {   // compare by NAME
-                return i;                                // found: return the index
+            if (animals[i].name.equals(animal.name)) {
+                return i;
             }
         }
-        return -1;                                       // not found
+        return -1;
     }
+
     public boolean removeAnimal(Animal animal) {
         int index = searchAnimal(animal);
         if (index == -1) {
-            return false;                          // animal not in the zoo
+            return false;
         }
         for (int i = index; i < animalCount - 1; i++) {
-            animals[i] = animals[i + 1];           // shift left
+            animals[i] = animals[i + 1];
         }
-        animals[animalCount - 1] = null;           // clear the last used cell
+        animals[animalCount - 1] = null;
         animalCount--;
         return true;
     }
-
 }
