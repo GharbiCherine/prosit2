@@ -1,3 +1,5 @@
+package org.example;
+
 public class Main {
     public static void main(String[] args) {
         Animal lion = new Animal("Felidae", "Simba", 5, true);
@@ -18,5 +20,21 @@ public class Main {
 
         System.out.println("Add bear         : " + myZoo.addAnimal(bear));
         myZoo.displayAnimals();
+
+        // Instruction 15
+        System.out.println("Zoo plein ? " + myZoo.isZooFull());
+
+        for (int i = 1; i <= 22; i++) {
+            myZoo.addAnimal(new Animal("Felidae", "Animal" + i, 3, true));
+        }
+        System.out.println("Zoo plein ? " + myZoo.isZooFull());
+
+        myZoo.removeAnimal(bear);
+        System.out.println("Zoo plein après suppression ? " + myZoo.isZooFull());
     }
 }
+        // Instruction 6: after adding the parameterized constructors, new Animal() and
+        // new Zoo() no longer compile, because Java removes the default constructor
+        // once any constructor is defined.
+// Instruction 8: println(myZoo) and println(myZoo.toString()) print Zoo@hashcode,
+// because the inherited Object.toString() is used. The fix is to override toString() (Instruction 9).

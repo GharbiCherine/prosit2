@@ -1,3 +1,5 @@
+package org.example;
+
 public class Zoo {
     static final int NBR_CAGES = 25;   // constante : ne peut plus changer
 
@@ -27,11 +29,15 @@ public class Zoo {
         return "Zoo{name='" + name + "', city='" + city + "', nbrCages=" + NBR_CAGES + "}";
     }
 
+    public boolean isZooFull() {
+        return animalCount >= NBR_CAGES;
+    }
+
     public boolean addAnimal(Animal animal) {
         if (animal == null) {
             return false;
         }
-        if (animalCount >= NBR_CAGES) {
+        if (isZooFull()) {
             return false;
         }
         if (searchAnimal(animal) != -1) {
